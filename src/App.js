@@ -13,13 +13,14 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      cart: { 1: 2, 2: 3 },
+      cart: { 1: 1, 2: 2 },
       itemsInCart: 0
     };
   }
 
   updateCart = commandObject => {
-    const { command, amount, id } = commandObject;
+    const amount = 1;
+    const { command, id } = commandObject;
     if (command === 'remove') {
       const updatedCart = this.state.cart;
       delete updatedCart.id;
@@ -32,7 +33,7 @@ class App extends Component {
       updatedCart[id] = updatedCart[id] + amount;
       this.setState({ cart: updatedCart });
     } else if (command === 'decrease') {
-      const updatedCart = this.state.cart[id];
+      let updatedCart = this.state.cart;
       updatedCart[id] = updatedCart[id] - amount;
       this.setState({ cart: updatedCart });
     }
@@ -61,7 +62,11 @@ class App extends Component {
               <Catalog products={products} />
             </Route>
             <Route path='/cart'>
-              <Cart cart={cart} products={products} />
+              <Cart
+                cart={cart}
+                products={products}
+                updateCart={this.updateCart}
+              />
             </Route>
             {/* https://stackoverflow.com/questions/52555147/pass-url-parameters-and-props-to-routes-rendered-component */}
             <Route

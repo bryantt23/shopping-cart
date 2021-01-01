@@ -14,7 +14,6 @@ export class Product extends Component {
 
     const commandObject = {
       command: 'increase',
-      amount: 1,
       id: productId
     };
     this.props.updateCart(commandObject);
@@ -35,12 +34,6 @@ export class Product extends Component {
           {this.props.products[productId].name} $
           {this.props.products[productId].price}
         </p>
-        {/* Product productId={productId} */}
-        {/* {this.props} */}
-        {/* {JSON.stringify(this.props.cart)}
-        <br></br>
-        <p>hiii</p>
-        {JSON.stringify(this.props)} */}
         <button onClick={() => this.addToCart(productId)}>Add to Cart</button>
         {}
         {this.state.addToOrderClicked && (

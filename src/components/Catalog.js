@@ -7,11 +7,12 @@ function Catalog(props) {
   const history = useHistory();
   const products = props.products.map(product => (
     <div
+      key={product.id}
       onClick={() => {
         history.push(`/product/${product.id}`);
       }}
     >
-      <ProductPreview product={product} />
+      <ProductPreview key={product.id} product={product} />
     </div>
   ));
   return (
