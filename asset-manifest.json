@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/shopping-cart/static/css/main.9fcaaffb.chunk.css",
+    "main.js": "/shopping-cart/static/js/main.9cf8455d.chunk.js",
+    "main.js.map": "/shopping-cart/static/js/main.9cf8455d.chunk.js.map",
+    "runtime-main.js": "/shopping-cart/static/js/runtime-main.ad450e30.js",
+    "runtime-main.js.map": "/shopping-cart/static/js/runtime-main.ad450e30.js.map",
+    "static/js/2.57170e3e.chunk.js": "/shopping-cart/static/js/2.57170e3e.chunk.js",
+    "static/js/2.57170e3e.chunk.js.map": "/shopping-cart/static/js/2.57170e3e.chunk.js.map",
+    "static/js/3.a09ca423.chunk.js": "/shopping-cart/static/js/3.a09ca423.chunk.js",
+    "static/js/3.a09ca423.chunk.js.map": "/shopping-cart/static/js/3.a09ca423.chunk.js.map",
+    "index.html": "/shopping-cart/index.html",
+    "static/css/main.9fcaaffb.chunk.css.map": "/shopping-cart/static/css/main.9fcaaffb.chunk.css.map",
+    "static/js/2.57170e3e.chunk.js.LICENSE.txt": "/shopping-cart/static/js/2.57170e3e.chunk.js.LICENSE.txt",
+    "static/media/greens.5f833d87.jpg": "/shopping-cart/static/media/greens.5f833d87.jpg",
+    "static/media/healthy-fats.7e302c63.jpg": "/shopping-cart/static/media/healthy-fats.7e302c63.jpg",
+    "static/media/protein-powder.90381793.jpg": "/shopping-cart/static/media/protein-powder.90381793.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ad450e30.js",
+    "static/js/2.57170e3e.chunk.js",
+    "static/css/main.9fcaaffb.chunk.css",
+    "static/js/main.9cf8455d.chunk.js"
+  ]
+}
