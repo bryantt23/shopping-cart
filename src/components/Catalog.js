@@ -15,12 +15,7 @@ function Catalog(props) {
       <ProductPreview key={product.id} product={product} />
     </div>
   ));
-  return (
-    <div>
-      Catalog!!!!
-      {products}
-    </div>
-  );
+  return <div>{products}</div>;
 }
 
 export default Catalog;

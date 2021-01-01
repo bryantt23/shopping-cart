@@ -20,7 +20,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      cart: { 0: 1, 1: 2, 2: 4 },
+      cart: {},
       itemsInCart: 0,
       totalCost: 0
     };
