@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Header />
+          <Header cart={cart} />
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
