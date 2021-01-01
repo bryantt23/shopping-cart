@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import ProductPreview from './ProductPreview';
 
 export class Cart extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   increaseInCart = productId => {
     const commandObject = {
       command: 'increase',
@@ -18,6 +22,14 @@ export class Cart extends Component {
     this.props.updateCart(commandObject);
   };
 
+  removeFromCart = productId => {
+    const commandObject = {
+      command: 'remove',
+      id: productId
+    };
+    this.props.updateCart(commandObject);
+  };
+
   renderProductsInCart() {
     const { cart, products } = this.props;
 
@@ -26,7 +38,7 @@ export class Cart extends Component {
       console.log(`${productId}: ${count}`);
       const product = products[productId];
       arr.push(
-        <div id={productId}>
+        <div key={productId} id={productId}>
           <ProductPreview product={product} />
           <div>
             <button
@@ -37,6 +49,9 @@ export class Cart extends Component {
             </button>
             <span>{count}</span>{' '}
             <button onClick={() => this.increaseInCart(productId)}>+</button>
+            <button onClick={() => this.removeFromCart(productId)}>
+              Remove from cart
+            </button>
           </div>
         </div>
       );

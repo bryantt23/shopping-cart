@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      cart: { 1: 1, 2: 2 },
+      cart: { 1: 1, 2: 2, 0: 5 },
       itemsInCart: 0
     };
   }
@@ -22,8 +22,8 @@ class App extends Component {
     const amount = 1;
     const { command, id } = commandObject;
     if (command === 'remove') {
-      const updatedCart = this.state.cart;
-      delete updatedCart.id;
+      let updatedCart = this.state.cart;
+      delete updatedCart[id];
       this.setState({ cart: updatedCart });
     } else if (command === 'increase') {
       let updatedCart = this.state.cart;
@@ -38,7 +38,8 @@ class App extends Component {
       this.setState({ cart: updatedCart });
     }
     const count = Object.values(this.state.cart).reduce(
-      (acc, cur) => acc + cur
+      (acc, cur) => acc + cur,
+      0
     );
     this.setState({ itemsInCart: count });
   };

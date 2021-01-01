@@ -5,14 +5,9 @@ export class ProductPreview extends Component {
     const { product } = this.props;
     return (
       <div>
-        <img
-          style={{ maxHeight: 300 }}
-          alt='blah'
-          src={product.src}
-          key={product.id}
-        />
+        <img style={{ maxHeight: 300 }} alt='blah' src={product.src} />
 
-        <p key={product.id}>
+        <p>
           {product.name} ${product.price}
         </p>
       </div>
