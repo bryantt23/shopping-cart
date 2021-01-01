@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductPreview from './ProductPreview';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 export class Cart extends Component {
   constructor(props) {
@@ -72,9 +73,17 @@ export class Cart extends Component {
 
     return (
       <div>
-        {JSON.stringify(this.props)}
-        Cart!!!!
-        {productsInCart}
+        <h1>Your cart</h1>
+        {productsInCart.length > 0 ? (
+          <div>
+            <Link to='/submit'>
+              <button onClick={() => {}}>Submit Order</button>
+            </Link>
+            {productsInCart}
+          </div>
+        ) : (
+          <h3>Your cart is empty</h3>
+        )}
       </div>
     );
   }

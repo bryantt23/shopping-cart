@@ -4,17 +4,25 @@ import Cart from './components/Cart';
 import Catalog from './components/Catalog';
 import Header from './components/Header';
 import Product from './components/Product';
+import Submit from './components/Submit';
 import { Component } from 'react';
 import image0 from './images/protein-powder.jpg';
 import image1 from './images/greens.jpg';
 import image2 from './images/healthy-fats.jpg';
 
+const products = [
+  { id: 0, name: 'Protein powder', price: 30.0, src: image0 },
+  { id: 1, name: 'Greens', price: 15.0, src: image1 },
+  { id: 2, name: 'Healthy fats', price: 10.0, src: image2 }
+];
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      cart: { 1: 1, 2: 2, 0: 5 },
-      itemsInCart: 0
+      cart: { 0: 1, 1: 2, 2: 4 },
+      itemsInCart: 0,
+      totalCost: 0
     };
   }
 
@@ -41,21 +49,24 @@ class App extends Component {
       (acc, cur) => acc + cur,
       0
     );
-    this.setState({ itemsInCart: count });
+
+    let totalCost = 0;
+    for (let prop in this.state.cart) {
+      let key = prop,
+        ct = this.state.cart[prop];
+      totalCost += products[key].price * ct;
+    }
+
+    this.setState({ itemsInCart: count, totalCost: totalCost });
   };
 
   render() {
-    const products = [
-      { id: 0, name: 'Protein powder', price: 30.0, src: image0 },
-      { id: 1, name: 'Greens', price: 15.0, src: image1 },
-      { id: 2, name: 'Healthy fats', price: 10.0, src: image2 }
-    ];
-    const { itemsInCart, cart } = this.state;
+    const { itemsInCart, cart, totalCost } = this.state;
 
     return (
       <Router>
         <div>
-          <Header cart={cart} itemsInCart={itemsInCart} />
+          <Header cart={cart} itemsInCart={itemsInCart} totalCost={totalCost} />
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
@@ -67,6 +78,14 @@ class App extends Component {
                 cart={cart}
                 products={products}
                 updateCart={this.updateCart}
+              />
+            </Route>
+            <Route path='/submit'>
+              <Submit
+                cart={cart}
+                products={products}
+                itemsInCart={itemsInCart}
+                totalCost={totalCost}
               />
             </Route>
             {/* https://stackoverflow.com/questions/52555147/pass-url-parameters-and-props-to-routes-rendered-component */}

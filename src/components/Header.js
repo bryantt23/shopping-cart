@@ -5,7 +5,9 @@ export class Header extends Component {
   render() {
     return (
       <nav>
-        <p>Items in shopping cart: {this.props.itemsInCart}</p>
+        <p>Number of items in your shopping cart: {this.props.itemsInCart}</p>
+        <p>Your total cost: ${this.props.totalCost}</p>
+
         <ul>
           <li>
             <Link to='/'>Home</Link>
