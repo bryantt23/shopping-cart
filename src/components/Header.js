@@ -3,12 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 export class Header extends Component {
   render() {
-    const itemsInShoppingCart = Object.values(this.props.cart).reduce(
-      (acc, cur) => acc + cur
-    );
     return (
       <nav>
-        <p>Items in shopping cart: {itemsInShoppingCart}</p>
+        <p>Items in shopping cart: {this.props.itemsInCart}</p>
         <ul>
           <li>
             <Link to='/'>Home</Link>

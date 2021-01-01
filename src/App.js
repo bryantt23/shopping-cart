@@ -5,12 +5,16 @@ import Catalog from './components/Catalog';
 import Header from './components/Header';
 import Product from './components/Product';
 import { Component } from 'react';
+import image0 from './images/protein-powder.jpg';
+import image1 from './images/greens.jpg';
+import image2 from './images/healthy-fats.jpg';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      cart: { 1: 2 }
+      cart: {},
+      itemsInCart: 0
     };
   }
 
@@ -32,39 +36,41 @@ class App extends Component {
       updatedCart[id] = updatedCart[id] - amount;
       this.setState({ cart: updatedCart });
     }
+    const count = Object.values(this.state.cart).reduce(
+      (acc, cur) => acc + cur
+    );
+    this.setState({ itemsInCart: count });
   };
 
   render() {
     const products = [
-      { id: 0, name: 'Protein powder', price: 30.0 },
-      { id: 1, name: 'Greens', price: 15.0 },
-      { id: 2, name: 'Healthy fats', price: 10.0 }
+      { id: 0, name: 'Protein powder', price: 30.0, src: image0 },
+      { id: 1, name: 'Greens', price: 15.0, src: image1 },
+      { id: 2, name: 'Healthy fats', price: 10.0, src: image2 }
     ];
-    const cart = this.state.cart;
+    const { itemsInCart, cart } = this.state;
 
     return (
       <Router>
         <div>
-          <Header cart={cart} />
+          <Header cart={cart} itemsInCart={itemsInCart} />
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
-            {/* <Route path='/about'>
-            <About />
-          </Route>*/}
             <Route path='/catalog'>
               <Catalog products={products} />
             </Route>
             <Route path='/cart'>
-              <Cart />
+              <Cart cart={cart} products={products} />
             </Route>
             {/* https://stackoverflow.com/questions/52555147/pass-url-parameters-and-props-to-routes-rendered-component */}
             <Route
-              path='/products'
+              path='/product'
               render={productId => (
                 <Product
                   productId={productId}
                   cart={cart}
+                  products={products}
                   updateCart={this.updateCart}
                 />
               )}

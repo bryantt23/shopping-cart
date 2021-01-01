@@ -9,11 +9,18 @@ function Catalog(props) {
       onClick={() => {
         console.log(product.id);
 
-        history.push(`/products/${product.id}`);
+        history.push(`/product/${product.id}`);
       }}
     >
+      <img
+        style={{ maxHeight: 300 }}
+        alt='blah'
+        src={product.src}
+        key={product.id}
+      />
+
       <p key={product.id}>
-        {product.name} {product.price}
+        {product.name} ${product.price}
       </p>
     </div>
   ));

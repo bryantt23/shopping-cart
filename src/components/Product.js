@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 export class Product extends Component {
   constructor(props) {
@@ -9,6 +10,8 @@ export class Product extends Component {
   }
 
   addToCart = productId => {
+    this.setState({ addToOrderClicked: true });
+
     const commandObject = {
       command: 'increase',
       amount: 1,
@@ -22,14 +25,32 @@ export class Product extends Component {
     const productId = arr[arr.length - 1];
     return (
       <div>
-        Product productId={productId}
+        <img
+          style={{ maxHeight: 300 }}
+          alt='blah'
+          src={this.props.products[productId].src}
+          key={productId}
+        />
+        <p>
+          {this.props.products[productId].name} $
+          {this.props.products[productId].price}
+        </p>
+        {/* Product productId={productId} */}
         {/* {this.props} */}
-        {JSON.stringify(this.props.cart)}
+        {/* {JSON.stringify(this.props.cart)}
         <br></br>
         <p>hiii</p>
-        {JSON.stringify(this.props)}
+        {JSON.stringify(this.props)} */}
         <button onClick={() => this.addToCart(productId)}>Add to Cart</button>
         {}
+        {this.state.addToOrderClicked && (
+          <Link to='/cart'>
+            <button onClick={() => {}}>Complete Order</button>
+          </Link>
+        )}
+        <Link to='/catalog'>
+          <button onClick={() => {}}>Go Back</button>
+        </Link>
       </div>
     );
   }
